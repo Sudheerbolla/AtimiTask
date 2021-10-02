@@ -3,4 +3,12 @@
     <string name="new_joke">New Joke</string>
     <string name="no_internet">No Network Connection Detected.</string>
     <string name="retry">Retry</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="delete">Delete</string>
+    <string name="favourite">Add to Favourite</string>
+    <string name="unfavourite">Remove from Favourites</string>
+    <string name="open">Open</string>
+    <string name="remove_from_nfavourites">Remove from\nFavourites</string>
+    <string name="no_favourites_found">No Favourites found</string>
 </resources>

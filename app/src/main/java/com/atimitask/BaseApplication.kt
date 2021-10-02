@@ -1,6 +1,7 @@
 package com.atimitask
 
 import android.app.Application
+import com.atimitask.utils.AppLocalStorage
 import com.atimitask.utils.StaticUtils
 import com.atimitask.wsutils.WSInterface
 import com.atimitask.wsutils.WSUtils
@@ -19,6 +20,7 @@ class BaseApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        appLocalStorage = AppLocalStorage().getInstance(this)
         initRetrofit()
     }
 
@@ -65,6 +67,7 @@ class BaseApplication : Application() {
     companion object {
         private var baseApplication: BaseApplication? = null
         private var wsInterface: WSInterface? = null
+        var appLocalStorage: AppLocalStorage? = null
 
         @get:Synchronized
         val instance: BaseApplication?

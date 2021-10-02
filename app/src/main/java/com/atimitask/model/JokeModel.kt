@@ -8,7 +8,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class JokeModel(
-    @SerializedName("Id") val jokeId: String = "",
+    @SerializedName("id") val jokeId: String = "",
     val joke: String = "",
     var status: String = "",
 ) : Parcelable {
@@ -16,4 +16,10 @@ data class JokeModel(
         return "Joke: $joke,\nStatus: $status"
     }
 
+    override fun equals(other: Any?): Boolean {
+        if (other is JokeModel)
+            return other.jokeId.equals(jokeId)
+        else
+            return super.equals(other)
+    }
 }

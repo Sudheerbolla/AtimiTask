@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.atimitask.utils.swipe.CustomSwipeView
+        android:id="@+id/swipeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        app:dragEdge="right"
+        app:swipemode="same_level">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorGreySep"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/ten_dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtUnFavourite"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@color/colorRed"
+                android:drawableStart="@drawable/ic_fav"
+                android:drawablePadding="@dimen/five_dp"
+                android:gravity="center"
+                android:padding="@dimen/seven_dp"
+                android:text="@string/remove_from_nfavourites"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/sixteen_sp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtOpen"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@color/colorGreen"
+                android:drawableStart="@drawable/ic_fav"
+                android:drawablePadding="@dimen/five_dp"
+                android:gravity="center"
+                android:padding="@dimen/seven_dp"
+                android:text="@string/open"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/sixteen_sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linBody"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/colorWhite"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/seven_dp">
+
+            <TextView
+                android:id="@+id/txtId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/three_dp"
+                android:textColor="@color/colorGrey"
+                android:textSize="@dimen/thirteen_sp" />
+
+            <TextView
+                android:id="@+id/txtJoke"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:padding="@dimen/seven_dp"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/eighteen_sp" />
+
+        </LinearLayout>
+
+    </com.atimitask.utils.swipe.CustomSwipeView>
+
+</layout>
