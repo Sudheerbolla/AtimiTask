@@ -16,6 +16,7 @@
             android:layout_height="wrap_content"
             android:background="@color/colorGreySep"
             android:gravity="center"
+            android:minHeight="@dimen/one_twenty_dp"
             android:orientation="horizontal"
             android:padding="@dimen/ten_dp">
 
@@ -56,6 +57,7 @@
             android:layout_gravity="center"
             android:background="@color/colorWhite"
             android:gravity="center"
+            android:minHeight="@dimen/one_twenty_dp"
             android:orientation="vertical"
             android:padding="@dimen/seven_dp">
 

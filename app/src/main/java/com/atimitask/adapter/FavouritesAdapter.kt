@@ -1,6 +1,7 @@
 package com.atimitask.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -36,7 +37,10 @@ class FavouritesAdapter(
         return favouritesArrayList.size
     }
 
-    class ViewHolder(var binding: ItemFavBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(var binding: ItemFavBinding) : RecyclerView.ViewHolder(binding.root),
+        View.OnClickListener {
+
+        var iClickListener: IClickListener? = null
 
         fun bind(joke: JokeModel, iClickListener: IClickListener?, mItemManger: ViewBinderHelper) {
             mItemManger.bind(binding.swipeLayout, adapterPosition.toString())
@@ -44,12 +48,16 @@ class FavouritesAdapter(
 
             binding.txtId.text = "Joke ID: ${joke.jokeId}"
             binding.txtJoke.text = joke.joke
-            binding.txtUnFavourite.setOnClickListener { v ->
-                if (iClickListener != null) iClickListener.onClick(v, adapterPosition)
-            }
-            binding.txtOpen.setOnClickListener { v ->
-                if (iClickListener != null) iClickListener.onClick(v, adapterPosition)
-            }
+            this.iClickListener = iClickListener
+
+            binding.txtUnFavourite.setOnClickListener(this)
+            binding.txtOpen.setOnClickListener(this)
+            binding.linBody.setOnClickListener(this)
+
+        }
+
+        override fun onClick(v: View?) {
+            if (iClickListener != null) iClickListener?.onClick(v!!, adapterPosition)
         }
 
     }

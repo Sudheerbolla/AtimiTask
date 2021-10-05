@@ -14,9 +14,9 @@ public class ViewBinderHelper {
 
     private static final String BUNDLE_MAP_KEY = "ViewBinderHelper_Bundle_Map_Key";
     private final Object stateChangeLock = new Object();
-    private Map<String, Integer> mapStates = Collections.synchronizedMap(new HashMap<String, Integer>());
-    private Map<String, CustomSwipeView> mapLayouts = Collections.synchronizedMap(new HashMap<String, CustomSwipeView>());
-    private Set<String> lockedSwipeSet = Collections.synchronizedSet(new HashSet<String>());
+    private Map<String, Integer> mapStates = Collections.synchronizedMap(new HashMap<>());
+    private Map<String, CustomSwipeView> mapLayouts = Collections.synchronizedMap(new HashMap<>());
+    private Set<String> lockedSwipeSet = Collections.synchronizedSet(new HashSet<>());
     private volatile boolean openOnlyOne = false;
 
     public void bind(final CustomSwipeView swipeLayout, final String id) {
@@ -28,13 +28,10 @@ public class ViewBinderHelper {
         mapLayouts.put(id, swipeLayout);
 
         swipeLayout.abort();
-        swipeLayout.setDragStateChangeListener(new CustomSwipeView.DragStateChangeListener() {
-            @Override
-            public void onDragStateChanged(int state) {
-                mapStates.put(id, state);
-                if (openOnlyOne) {
-                    closeOthers(id, swipeLayout);
-                }
+        swipeLayout.setDragStateChangeListener(state -> {
+            mapStates.put(id, state);
+            if (openOnlyOne) {
+                closeOthers(id, swipeLayout);
             }
         });
 

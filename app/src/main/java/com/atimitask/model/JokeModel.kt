@@ -22,4 +22,9 @@ data class JokeModel(
         else
             return super.equals(other)
     }
+
+//    override fun hashCode(): Int {
+//        return jokeId.hashCode()
+//    }
+
 }

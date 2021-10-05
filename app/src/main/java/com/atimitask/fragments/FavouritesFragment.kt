@@ -16,10 +16,12 @@ import com.atimitask.interfaces.IClickListener
 import com.atimitask.interfaces.InteractWithActivity
 import com.atimitask.model.JokeModel
 import com.atimitask.utils.DividerItemDecoration
+import com.atimitask.utils.StaticUtils
 import java.util.*
 
 class FavouritesFragment : Fragment(), IClickListener {
 
+    private lateinit var favouritesAdapter: FavouritesAdapter
     private lateinit var fragmentFavListBinding: FragmentFavListBinding
     private lateinit var mainActivity: MainActivity
     lateinit var favouriteJokes: ArrayList<JokeModel>
@@ -41,7 +43,7 @@ class FavouritesFragment : Fragment(), IClickListener {
 
     override fun onResume() {
         super.onResume()
-        mainActivity.showTopBar("Favourites List: swipe for actions", true, false)
+        mainActivity.showTopBar(getString(R.string.fav_list_heading), true, false)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -79,29 +81,44 @@ class FavouritesFragment : Fragment(), IClickListener {
     }
 
     private fun setFavouritesAdapter() {
-        val favouritesAdapter = FavouritesAdapter(mainActivity.favouriteJokes, this)
+        favouritesAdapter = FavouritesAdapter(mainActivity.favouriteJokes, this)
         fragmentFavListBinding.recyclerView.adapter = favouritesAdapter
     }
 
     override fun onClick(view: View, position: Int) {
         when (view.id) {
             R.id.txtUnFavourite -> {
-                val item = favouriteJokes.get(position)
-                favouriteJokes.remove(item)
-                onInteractWithActivity.onRemoveFromFavourites(item)
-                checkViewVisibility()
+                StaticUtils.showDeleteFromFavDialog(mainActivity) {
+                    removeFromFav(position)
+                }
             }
+            /*
             R.id.txtOpen -> {
                 mainActivity.replaceFragment(
-                    JokeFragment.newInstance(favouriteJokes.get(position)),
+                    JokeFragment.newInstance(favouriteJokes.get(position), true),
+                    true
+                )
+            }
+            */
+            else -> {
+                mainActivity.replaceFragment(
+                    JokeFragment.newInstance(favouriteJokes.get(position), true),
                     true
                 )
             }
         }
     }
 
-    override fun onLongClick(view: View, position: Int) {
+    private fun removeFromFav(position: Int) {
+        onInteractWithActivity.onRemoveFromFavourites(favouriteJokes.get(position))
+        favouritesAdapter.notifyItemRemoved(position)
+        if (favouriteJokes.size < 1) checkViewVisibility()
+    }
 
+    override fun onLongClick(view: View, position: Int) {
+        StaticUtils.showDeleteFromFavDialog(mainActivity) {
+            removeFromFav(position)
+        }
     }
 
 }

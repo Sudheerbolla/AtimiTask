@@ -3,8 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/webdev1/Documents/DevSudheer/samples/Atimi/app/src/main/res/drawable/bg_button.xml" value="0.3828125" />
         <entry key="..\:/Users/webdev1/Documents/DevSudheer/samples/Atimi/app/src/main/res/drawable/ic_back.xml" value="0.3828125" />
+        <entry key="..\:/Users/webdev1/Documents/DevSudheer/samples/Atimi/app/src/main/res/drawable/ic_bg_button.xml" value="0.3828125" />
         <entry key="..\:/Users/webdev1/Documents/DevSudheer/samples/Atimi/app/src/main/res/drawable/ic_fav.xml" value="0.3828125" />
+        <entry key="..\:/Users/webdev1/Documents/DevSudheer/samples/Atimi/app/src/main/res/drawable/ic_fb.xml" value="0.3828125" />
+        <entry key="..\:/Users/webdev1/Documents/DevSudheer/samples/Atimi/app/src/main/res/drawable/ic_fb_bg.xml" value="0.3828125" />
+        <entry key="..\:/Users/webdev1/Documents/DevSudheer/samples/Atimi/app/src/main/res/drawable/ic_insta.xml" value="0.3828125" />
+        <entry key="..\:/Users/webdev1/Documents/DevSudheer/samples/Atimi/app/src/main/res/drawable/ic_share.xml" value="0.3828125" />
+        <entry key="..\:/Users/webdev1/Documents/DevSudheer/samples/Atimi/app/src/main/res/drawable/ic_twitter.xml" value="0.3828125" />
+        <entry key="..\:/Users/webdev1/Documents/DevSudheer/samples/Atimi/app/src/main/res/drawable/ic_twitter_bg.xml" value="0.3828125" />
         <entry key="..\:/Users/webdev1/Documents/DevSudheer/samples/Atimi/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/webdev1/Documents/DevSudheer/samples/Atimi/app/src/main/res/layout/fragment_fav_list.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/webdev1/Documents/DevSudheer/samples/Atimi/app/src/main/res/layout/fragment_joke.xml" value="0.36666666666666664" />

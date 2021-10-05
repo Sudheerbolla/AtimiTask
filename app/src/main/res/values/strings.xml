@@ -3,12 +3,23 @@
     <string name="new_joke">New Joke</string>
     <string name="no_internet">No Network Connection Detected.</string>
     <string name="retry">Retry</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="delete">Delete</string>
     <string name="favourite">Add to Favourite</string>
     <string name="unfavourite">Remove from Favourites</string>
     <string name="open">Open</string>
     <string name="remove_from_nfavourites">Remove from\nFavourites</string>
     <string name="no_favourites_found">No Favourites found</string>
+    <string name="share_via_email">Share via Email</string>
+    <string name="share">Share</string>
+    <string name="facebook">FB</string>
+    <string name="twitter">Twitter</string>
+    <string name="instagram">Instagram</string>
+    <string name="share_using_social_media">Share Using Social Media</string>
+    <string name="atimi_share_your_joke">Atimi: Share Your Joke</string>
+    <string name="removed_from_favourites">Removed from favourites</string>
+    <string name="error_removing_from_favourites">Something went wrong while removing from favourites</string>
+    <string name="added_to_favourites">Added to favourites</string>
+    <string name="error_adding_to_fav">Something went wrong while adding to favourites</string>
+    <string name="fav_list_heading">Favourites List: swipe for actions</string>
+    <string name="delete_from_fav_alert">Are you sure you want to delete the joke from Favourites?</string>
 </resources>

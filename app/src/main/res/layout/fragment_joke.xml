@@ -1,58 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/ten_dp"
         tools:context=".fragments.JokeFragment">
 
         <ProgressBar
             android:id="@+id/progressLoading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_gravity="center" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/txtJoke"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/ten_dp"
-            android:padding="@dimen/ten_dp"
-            android:textColor="@color/black"
-            android:textSize="@dimen/eighteen_sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:padding="@dimen/twenty_dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/eighteen_sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/seven_dp">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnNewJoke"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/five_dp"
+                android:background="@color/colorBlue"
+                android:paddingStart="@dimen/fifteen_dp"
+                android:paddingEnd="@dimen/fifteen_dp"
+                android:text="@string/new_joke"
+                android:textAllCaps="false"
+                android:textColor="@color/white" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnFavUnFav"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/five_dp"
+                android:background="@color/colorBlue"
+                android:drawableStart="@drawable/ic_fav"
+                android:drawablePadding="@dimen/ten_dp"
+                android:paddingStart="@dimen/fifteen_dp"
+                android:paddingEnd="@dimen/fifteen_dp"
+                android:text="@string/favourite"
+                android:textAllCaps="false"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linControls"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fifteen_dp"
+            android:gravity="center"
+            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/btnFavUnFav">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnNewJoke"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/fifteen_dp"
-            android:layout_marginTop="12dp"
-            android:text="@string/new_joke"
-            android:textAllCaps="false"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.33"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txtJoke" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/five_dp"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnFavUnFav"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/fifteen_dp"
-            android:text="@string/favourite"
-            android:textAllCaps="false"
-            app:layout_constraintStart_toEndOf="@id/btnNewJoke"
-            app:layout_constraintTop_toBottomOf="@id/txtJoke" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtShareViaEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_button"
+                    android:drawableStart="@drawable/ic_share"
+                    android:drawablePadding="@dimen/ten_dp"
+                    android:padding="@dimen/ten_dp"
+                    android:text="@string/share_via_email"
+                    android:textColor="@color/colorGreen"
+                    android:textSize="@dimen/sixteen_sp"
+                    app:elevation="@dimen/five_dp" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/twenty_dp"
+                android:text="@string/share_using_social_media"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/thirteen_sp" />
+
+            <LinearLayout
+                android:id="@+id/linSocialMedia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/five_dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtFBShare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_fb_bg"
+                    android:drawableStart="@drawable/ic_fb"
+                    android:drawablePadding="@dimen/ten_dp"
+                    android:paddingStart="@dimen/ten_dp"
+                    android:paddingTop="@dimen/ten_dp"
+                    android:paddingEnd="@dimen/fifteen_dp"
+                    android:paddingBottom="@dimen/ten_dp"
+                    android:text="@string/facebook"
+                    android:textColor="@color/colorBlueWord"
+                    android:textSize="@dimen/eighteen_sp"
+                    app:elevation="@dimen/five_dp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtTwitterShare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/fifteen_dp"
+                    android:background="@drawable/ic_twitter_bg"
+                    android:drawableStart="@drawable/ic_twitter"
+                    android:drawablePadding="@dimen/ten_dp"
+                    android:padding="@dimen/ten_dp"
+                    android:text="@string/twitter"
+                    android:textColor="@color/colorBlue"
+                    android:textSize="@dimen/eighteen_sp"
+                    app:elevation="@dimen/five_dp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtShare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/ten_dp"
+                    android:background="@drawable/bg_button"
+                    android:drawableStart="@drawable/ic_share"
+                    android:drawablePadding="@dimen/ten_dp"
+                    android:padding="@dimen/ten_dp"
+                    android:text="@string/share"
+                    android:textColor="@color/colorGreen"
+                    android:textSize="@dimen/sixteen_sp"
+                    app:elevation="@dimen/five_dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </layout>

@@ -6,13 +6,12 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import com.atimitask.databinding.ActivityMainBinding
 import com.atimitask.fragments.FavouritesFragment
 import com.atimitask.fragments.JokeFragment
+import com.atimitask.interfaces.InteractWithActivity
 import com.atimitask.model.JokeModel
 import com.atimitask.utils.AppLocalStorage
-import com.atimitask.interfaces.InteractWithActivity
 import com.atimitask.utils.StaticUtils
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -38,23 +37,13 @@ class MainActivity : AppCompatActivity(), InteractWithActivity {
         replaceFragment(JokeFragment(), false)
     }
 
-    private fun setListeners(){
+    private fun setListeners() {
         activityMainBinding.imgBack.setOnClickListener {
             onBackPressed()
         }
         activityMainBinding.imgFavourites.setOnClickListener {
             replaceFragment(FavouritesFragment(), true)
         }
-    }
-
-    private fun getFavouritesFromLocalStorage(): ArrayList<JokeModel> {
-        val storageData: String? = appLocalStorage?.getValue(
-            AppLocalStorage.SP_FAVOURITES,
-            Gson().toJson(ArrayList<JokeModel>())
-        )
-        favouriteJokes =
-            Gson().fromJson(storageData, object : TypeToken<ArrayList<JokeModel>>() {}.type)
-        return favouriteJokes
     }
 
     fun showTopBar(heading: String?, showBack: Boolean, showFav: Boolean) {
@@ -74,56 +63,43 @@ class MainActivity : AppCompatActivity(), InteractWithActivity {
         ).commitAllowingStateLoss()
     }
 
-    fun clearAndReplaceFragment(fragment: Fragment) {
-        clearBackStack()
-        StaticUtils.hideSoftKeyboard(this)
-        val tag = fragment.javaClass.simpleName
-        val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.mainFrame, fragment, tag).addToBackStack(tag)
-            .commitAllowingStateLoss()
-    }
-
-    fun clearBackStack() {
-        val fragment = supportFragmentManager
-        fragment.popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
-    }
-
-    fun clearBackStackCompletely() {
-        val fragment = supportFragmentManager
-        fragment.popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
-    }
-
-    fun popBackStack() {
-        StaticUtils.hideSoftKeyboard(this)
-        val fragment = supportFragmentManager
-        fragment.popBackStackImmediate()
-    }
-
     override fun onRemoveFromFavourites(joke: JokeModel) {
-        if (favouriteJokes.isNotEmpty() && favouriteJokes.contains(joke)) {
-            favouriteJokes.remove(joke)
-            appLocalStorage?.setValue(AppLocalStorage.SP_FAVOURITES, Gson().toJson(favouriteJokes))
-            StaticUtils.showToast(this, "Removed from favourites")
-        } else {
-            StaticUtils.showToast(this, "Something went wrong while removing from favourites")
+        try {
+            if (favouriteJokes.isNotEmpty() && favouriteJokes.contains(joke)) {
+                favouriteJokes.remove(joke)
+                appLocalStorage?.setValue(
+                    AppLocalStorage.SP_FAVOURITES,
+                    Gson().toJson(favouriteJokes)
+                )
+                StaticUtils.showToast(this, getString(R.string.removed_from_favourites))
+            } else {
+                StaticUtils.showToast(this, getString(R.string.error_removing_from_favourites))
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
+
     }
 
     override fun onAddToFavourites(joke: JokeModel) {
         try {
             if (!favouriteJokes.contains(joke)) {
                 favouriteJokes.add(joke)
-                StaticUtils.showToast(this, "Added to favourites")
-                appLocalStorage?.setValue(AppLocalStorage.SP_FAVOURITES, Gson().toJson(favouriteJokes))
+                StaticUtils.showToast(this, getString(R.string.added_to_favourites))
+                appLocalStorage?.setValue(
+                    AppLocalStorage.SP_FAVOURITES,
+                    Gson().toJson(favouriteJokes)
+                )
             } else {
-                StaticUtils.showToast(this, "Something went wrong while adding to favourites")
+                StaticUtils.showToast(this, getString(R.string.error_adding_to_fav))
             }
         } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 
     override fun onUpdateFavourites() {
-        favouriteJokes = getFavouritesFromLocalStorage()
+        favouriteJokes = StaticUtils.getFavouritesFromLocalStorage()
     }
 
 }
